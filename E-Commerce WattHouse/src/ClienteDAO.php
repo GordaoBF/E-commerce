@@ -77,9 +77,11 @@
         static function Validar($dados){
             //conectar
             $conexao = ConexaoBD::conectar();
-
-            $senha = md5($dados['senha']);
-            $sql = "select * from watthouse.clientes where email='{$dados['email']}' and senha='{$senha}';";
+            if(isset($dados['senha'])){
+                $senha = md5($dados['senha']);
+                $sql = "select * from watthouse.clientes where email='{$dados['email']}' and senha='{$senha}';";
+            }else {$sql = "select * from watthouse.clientes where email='{$dados['email']}';";}
+            
 
             $resultado = $conexao->query($sql);
             $cliente = $resultado->fetch(PDO::FETCH_ASSOC);

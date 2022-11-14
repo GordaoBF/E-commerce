@@ -16,13 +16,14 @@
 <!-- jquery -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
                         
-<!-- Script de abrir Login -->
+<!-- Script de abrir Login quando não conectado ná conta -->
+<?php if(!isset($_SESSION['cliente'])):?>
 <script type="text/javascript">
-if(<?php if(isset($_GET['v']))?>==true){
-    $('#login').modal('show');
-}
+    $(document).ready(function() {
+        $('#login').modal('show');
+    });
 </script>
-
+<?php endif; ?>
 </body>
 
 </html>
