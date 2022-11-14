@@ -166,11 +166,12 @@ include "incs/ValidarSessao.php";
                                         <input type="hidden" name="operacao" value="limpar">
                                         <button type='submit' class="btn btn-secondary">Esvaziar Carrinho</button>
                                     </form>
-                                    <!-- <form action="incs/ValidarSessao.php" method="post">
+                                    <form action="incs/ValidarSessao.php" method="post">
+                                        <input type="hidden" name="cliente" value="<?=$_SESSION['cliente']?>">
                                         <input type="hidden" name="cliente" value="<?=$_SESSION['cliente']?>">
                                         <button type='submit' class="btn btn-secondary">Finalizar Compra</button>
-                                    </form> -->
-                                    <a role='button' data-bs-toggle="offcanvas" data-bs-target="#offFinalizar" class="btn btn-success float-end" type="submit">Finalizar Compra</a>
+                                    </form>
+                                    <!-- <a role='button' data-bs-toggle="offcanvas" data-bs-target="#offFinalizar" class="btn btn-success float-end" type="submit">Finalizar Compra</a> -->
                                 </div>
                             </div>
                             
@@ -236,11 +237,10 @@ include "incs/ValidarSessao.php";
                                 </div>
                             </div>
                         </div>
-
                         <!-- modal Login -->
                         <div>
                             <div class="modal fade" tabindex="-1" id="login">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content " id="loginModal">
                                         <h1 class="text-center py-3">Login</h1>
                                         <form method="post" class="mx-5 mb-4">
@@ -255,6 +255,7 @@ include "incs/ValidarSessao.php";
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- modal Cadastro -->
                         <div>
                             <div class="modal fade" tabindex="-1" id="cadastro">

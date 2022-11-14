@@ -13,7 +13,15 @@
 
 <!-- Scripts e outras coisas -->
 <script src="js/bootstrap.bundle.min.js"></script>
-
+<!-- jquery -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+                        
+<!-- Script de abrir Login -->
+<script type="text/javascript">
+if(<?php if(isset($_GET['v']))?>==true){
+    $('#login').modal('show');
+}
+</script>
 
 </body>
 
