@@ -1,0 +1,271 @@
+/* ---------------------------------------------------------------------
+ SITE PRINCIPAL E CSS GLOBAL
+--------------------------------------------------------------------- */
+/* bagui da fontedo site */
+@import url('https://fonts.googleapis.com/css2?family=Thasadith:wght@700&display=swap');
+html {font-family: 'Thasadith', sans-serif; font-size: medium;}
+
+/* o header da pagina principal via ter esse tamanho fixo */
+header #cima{height: 20vh;}
+
+/* search vai ter esse width */
+.search{width: 85%;}
+
+#verify{width: 80%; margin: auto;  margin-top: 20vh;}
+
+/* faz o separador lá do finalizar compra */
+.separator {height: 100%; border-left: 2px solid rgb(56, 56, 56);}
+
+/* define que o card quando deixa de estar hoverado ele vai diminuir devagar */
+.card{transform: scale(1); z-index: 1; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; transition: all 0.5s; min-height: 360x; max-height: 370px;} 
+
+/* define que quando o card for hoverado ele vai aumentar devagarinho e mudar de Z */
+.card:hover{transform: scale(1.1); z-index: 2; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; transition: all 0.5s;}
+
+/* tamanhos do body e header e footer do card */
+.card-b{height: 200px; max-height: 200px;}
+.card-h{height: 180px; max-height: 180px;}
+
+/* tamanhos do offcanva carrinho */
+#offCarrinho{width: 50vw;}
+
+/* tamanhos do offcanva de Finalizar Compra e tb define que ele fica no meio*/
+#offFinalizar{height: 100vw; width: 75vw; left: 25vmin;}
+
+/* tentando definir o tamanho do img no card */
+.card-b h6{object-fit: contain;}
+
+/* o card promocao e card normal tem esse tamanho fixo e a imagem dele vai ocupar apenas o espaço dele */
+.card-promo{height: 180px; max-height: 180px;}
+.card-promo a, #div-image a, #verMais img, #div-image a img, .img-car img{width: 100%; height: 100%; object-fit: contain;}
+.card-promo a img{width: 100%; height: 100%; object-fit: contain;}
+
+/* define o tamanho do inner do slide de promoção */
+#promo-inner{width: 100%; height: 250px;}
+
+/* define o tamanho maximo dos card destaque */
+.col.card#destaque {height: 25vh;}
+
+/* define o tamanho da div da imagem do produto individual */
+#div-image{height: 600px; max-height: 600px; width: 600px; max-width: 600px;}
+
+/* define o tamanho da div da imagem do carrinho */
+.img-car{height: 100px; max-height: 100px; width: 100px; max-width: 100px;}
+
+/* define que a imagem que está no editar vai ter este tamanho */
+#imageEdit{max-width: 150px;}
+
+/* só mostra */
+.mostrar{display: block; transform: scale(1); transform-origin: center; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; transition: all 0.5s;}
+
+/* n mostra*/
+.nmostrar{display: none;transform: scale(0); transform-origin: center; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; transition: opacity 0.5s ease-out;}
+
+/* define o tamanho da imagem do carousel */
+.carousel-inner img{object-fit: cover; width: 100vw; height: 70vh;} 
+
+.carousel-inner .card-group{width: 100%;}
+
+/* hover dos botões dos carousels */
+.carousel-control-prev, .carousel-control-next{opacity: 0%;}
+.carousel-control-prev:hover, .carousel-control-next:hover{opacity: 100%;}
+
+.img-slide{width: 100%;}
+
+/* botão da descricao gira quando descolapsado */
+#collapseDescricao{width: 100%; }
+
+#des{z-index: 5;}
+
+/* offcanva e modal*/
+.menu{
+    position: relative;
+    top: 34%;
+}
+.modal-login{
+    width: 45vwx;
+}
+.modal-log{
+    align-self: center;
+}
+.offcanvas-shop{
+    width: 100%;
+    max-width: 500px;
+}
+#loginModal{
+    width: 50vw;
+    height: 70vh;
+}
+
+/* formatação */
+.btn:hover{
+    box-shadow: 2px;
+}
+/* define o tamanho desses bagui e que eles e escodem */
+.info, .title, .but, .preco{width: 100%; max-height: 70px; overflow: hidden;}
+
+/* define o overflow na aprce */
+.info::-webkit-scrollbar, .title::-webkit-scrollbar, .but::-webkit-scrollbar, .preco::-webkit-scrollbar{display: none;}
+
+/* define o tamanho desses bagui e que eles e escodem */
+.info:hover, .title:hover, .but:hover, .preco:hover{overflow-y: scroll; scrollbar-width: none;}
+
+
+/* define que os link é assim */
+.link{
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* define que a lista vai ter esse tamanho na tela do usuario e que vai poder ser scrolavel */
+.lista{max-height: 50vh; min-height: 10vh; overflow-y: hidden;}
+.lista::-webkit-scrollbar {display: none;}
+
+/* define que a lista vai ter esse tamanho na tela do usuario e que vai poder ser scrolavel */
+.lista:hover{overflow-y: scroll;}
+
+
+/* define que o overflow n aparece */
+.decri {overflow: hidden;}
+.decri::-webkit-scrollbar {display: none;}
+
+/* quando hoverado vai ser scrollavel */
+.decri:hover {overflow-x: scroll;}
+
+/* zoom hover bunito */
+.img-zoom {position: relative; overflow: hidden;}
+.img-zoom img, .img-zoom p {max-width: 100%; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; transition: all 0.5s;}
+.img-zoom:hover img, .img-zoom:hover p{margin: auto; -moz-transform: scale(1.2); -webkit-transform: scale(1.2); transform: scale(1.2);}
+
+
+/* coloração bunita de tudo */
+header, .carousel,.sidebar-header{background: linear-gradient(90deg, #3580ff 37%, #0030ec 100%);}
+footer{background: linear-gradient(90deg, #0030ec 7%, rgba(53,128,255,1) 100%);}
+
+/* ---------------------------------------------------------------------
+ PARTE ESPECIFICA DE ADM
+--------------------------------------------------------------------- */
+
+body#adm {
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body#adm h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem auto;
+}
+
+body#adm form {
+    width: auto;
+    height: auto;
+    margin: 4rem auto;
+    padding: 5rem;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+body#adm label, body#adm
+legend {
+    display: block;
+    margin: .5rem 0;
+    font-size: 14px;
+}
+
+.input-padrao {
+    /* width: 300px; */
+    margin: .5rem 0;
+}
+
+body#adm button {
+    display: block;
+    padding: .5rem 1rem;
+    margin: .5rem 0;
+}
+
+body#adm table {
+    width: 100%;
+    margin-bottom: .5em;
+    table-layout: fixed;
+}
+
+body#adm td, body#adm
+th {
+    padding: .7em;
+    margin: 0;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+body#adm th {
+    font-weight: bold;
+    background-color: #EEE;
+}
+
+/* ---------------------------------------------------------------------
+ OS ESQUECIDOS
+--------------------------------------------------------------------- */
+
+/* #promocao .carousel-control-prev, #promocao .carousel-control-next{width: min-content;}  */
+
+/* div#baixo ul a:hover{
+    opacity: 90%;
+}
+.horizontal{
+    overflow-x: scroll;
+}
+.word-br{
+    word-break: normal
+} */
+
+/* define um tamanho pro carousel inteiro e pra imagem do carosuel */
+/* #ca{height: 70vh;} */
+
+/* define o tamanho maximo do card */
+/* .col .card{
+    max-height: 350px;
+    min-height: 350px;
+} */
+/* quando for selecionado a promocao aparce a opção de desconto
+.promocao:checked ~ .desconto{
+    display: block;
+    transform: scale(1);
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+} */
+/* desconto fica escondido */
+/* .desc{
+    display: none;
+    transform-origin: 1px;
+    transform: scale(0);
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+} */
+/* .decri:hover #descricao{
+    display: block;
+    transform: scale(1);
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+} */
+/* define a posição da imagem do span, no caso a fita */
+/* .spanzin img{
+    position: absolute;
+    width: 125px;
+    top: -81px;
+    bottom: 68px;
+    right: -5px; 
+    transform: scale(1.1);
+    user-select: none;
+} */
+/* .promo {
+    position: absolute;
+    display: inline-block;
+    z-index: 2;
+    transform: rotate(-35deg);
+} */
