@@ -53,10 +53,9 @@
         function alterar($dados){
             //conectar
             $conexao = ConexaoBD::conectar();
-            $id = $_REQUEST['p'];
             $senha = md5($dados['senha']);
-
-            $sql = "update watthouse.clientes set nome='{$dados['nome']}', email='{$dados['email']}', senha='{$senha}', cpf='{$dados['cpf']}' where idclientes={$id}";
+            
+            $sql = "update watthouse.clientes set nome='{$dados['nome']}' where idclientes='".$dados['p']."';";
             $conexao->exec($sql);
 
             $sql2 = "update watthouse.cartao set nomecartao='{$dados['nomecartao']}', agencia='{$dados['agencia']}', 3numeros='{$dados['3numeros']}', numeros='{$dados['numeros']}', data='{$dados['data']}' where idcartao={$dados['idcartao']}";

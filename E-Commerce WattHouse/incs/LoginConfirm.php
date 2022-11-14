@@ -17,7 +17,7 @@ if(isset($_POST['login']) && !isset($_POST['cliente'])){
     if ($clienteDAO->Validar($_POST)) {
         $_SESSION['cliente'] = $_POST['cliente'];
     }else {
-        header('Location:../Home.php?v=');
+        header('Location:../Home.php?msg=Email e/ou Senha inválidos');
     }
 }elseif(!isset($_POST['login']) && !isset($_POST['cliente'])){}
 

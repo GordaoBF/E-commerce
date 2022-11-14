@@ -128,9 +128,9 @@ $clienteDAO = new clienteDAO();
         <form method="POST"  enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=cliente&acao=editar" class="container w-75">
             <h2 class="my-4 text-center">Alterar de Cliente</h2>
 
-            <input type="hidden" value="<?=$cl['idclientes']?>" name="p">
+            <input type="hidden" name="p" value="<?=$cl['idclientes']?>">
 
-            <input type="hidden" value="<?=$cl['idcartao']?>" name="idcartao">
+            <input type="hidden"  name="idcartao" value="<?=$cl['idcartao']?>">
 
             <div class="mb-3">
                 <label for="idnome" class="form-label">Nome do Usuario</label>
@@ -149,12 +149,12 @@ $clienteDAO = new clienteDAO();
 
             <div class="mb-3">
                 <label for="idmarca" class="form-label">Senha</label>
-                <input type="password" name="senha"minlength="4" id="idsenha" class="form-control client">
+                <input type="password" name="senha" minlength="4" id="idsenha" class="form-control client">
             </div>
 
             <div class="mb-3">
                 <label for="idquantidade" class="form-label">Confirmar Senha</label>
-                <input type="password" name="senha2" minlength="4" id="idsenha" class="form-control client" >
+                <input type="password" name="senha2" minlength="4" id="idsenha2" class="form-control client" >
             </div>
 
             <div class="mb-3">

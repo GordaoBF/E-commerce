@@ -73,11 +73,7 @@
         function alterar($dados){
             //conectar
             $conexao = ConexaoBD::conectar();
-            if (isset($_GET['p'])) {
-                $id = $_GET['p'];
-            }else {
-                $id = $_POST['p'];
-            }
+            $id = $_REQUEST['p'];
             if (isset($dados['promocao'])){
                 $promocao = 1;
                 $desconto = $dados['desconto'];

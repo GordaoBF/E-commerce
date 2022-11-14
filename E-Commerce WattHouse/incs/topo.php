@@ -170,14 +170,68 @@ include "incs/ValidarSessao.php";
                                         <input type="hidden" name="operacao" value="limpar">
                                         <button type='submit' class="btn btn-secondary">Esvaziar Carrinho</button>
                                     </form>
+                        <?php if (!isset($_SESSION['cliente'])) : ?>
                                     <form action="incs/LoginConfirm.php" class="float-end" method="post">
-                                        <input type="hidden" name="cliente" value="<?= $_SESSION['cliente']??null;?>">
+                                        <input type="hidden" name="cliente" value="<?= $_SESSION['cliente'] ?? null; ?>">
                                         <button type='submit' class="btn btn-primary">Finalizar Compra</button>
                                     </form>
-                                    <!-- <a role='button' data-bs-toggle="offcanvas" data-bs-target="#offFinalizar" class="btn btn-success float-end" type="submit">Finalizar Compra</a> -->
                                 </div>
                             </div>
+                        <?php else : ?>
+                            <a role='button' data-bs-toggle="offcanvas" data-bs-target="#offFinalizar" class="btn btn-success float-end" type="submit">Finalizar Compra</a>
+                            <!-- offcanvas finalizar compra -->
+                            <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offFinalizar">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title">Offcanvas bottom</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body d-flex justify-content-between bg-danger">
+                                    <div class="col-7 bg-warning">
+                                        <div id="verify">
+                                            <form action="" method="post" class="row">
+                                                <?php
+                                                if (isset($_SESSION['cliente'])) :
+                                                    $cl = ClienteDAO::ConsultaID($_SESSION['cliente']) ?>
+                                                    <div class="col-6">
+                                                        <label for="idnome" class="form-label">Nome do Titular</label>
+                                                        <input type="text" name="nomecartao" value='<?= $cl['nomecartao'] ?>' id="idnome" class="form-control client">
+                                                    </div>
 
+                                                    <div class="col-6">
+                                                        <label for="idquantidade" class="form-label">CPF</label>
+                                                        <input type="number" name="cpf" maxlength="14" minlength="11" id="idcartao" class="form-control client">
+                                                    </div>
+
+                                                    <div class="col-5">
+                                                        <label for="idquantidade" class="form-label">Números do cartão</label>
+                                                        <input type="text" name="numeros" maxlength="16" id="idcartao" class="form-control client">
+                                                    </div>
+
+                                                    <div class="col-2">
+                                                        <label for="idquantidade" class="form-label">3 Números</label>
+                                                        <input type="number" name="3numeros" minlength="3" maxlength="3" id="idcartao" class="form-control client">
+                                                    </div>
+
+                                                    <div class="col-2">
+                                                        <label for="idquantidade" class="form-label">Agência</label>
+                                                        <input type="text" name="agencia" id="idcartao" class="form-control client">
+                                                    </div>
+
+                                                    <div class="col-3">
+                                                        <label for="idquantidade" class="form-label">DATA</label>
+                                                        <input type="text" name="data" minlength="4" maxlength="5" id="idcartao" class="form-control client">
+                                                    </div>
+                                                <?php endif; ?>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 bg-warning">
+                                        <div class="separator"></div>
+                                        <button type="submit">Finalizar Compra</button>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         </div>
                         <!-- botao do carrinho -->
                         <div>
@@ -188,74 +242,25 @@ include "incs/ValidarSessao.php";
                                 </span>
                             </a>
                         </div>
-                        <!-- offcanvas finalizar compra -->
-                        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offFinalizar">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title">Offcanvas bottom</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body d-flex justify-content-between bg-danger">
-                                <div class="col-7 bg-warning">
-                                    <div id="verify">
-                                        <form action="" method="post" class="row">
-                                            <?php
-                                            if (isset($_SESSION['cliente'])) :
-                                                $cl = ClienteDAO::ConsultaID($_SESSION['cliente']) ?>
-                                                <div class="col-6">
-                                                    <label for="idnome" class="form-label">Nome do Titular</label>
-                                                    <input type="text" name="nomecartao" value='<?= $cl['nomecartao'] ?>' id="idnome" class="form-control client">
-                                                </div>
 
-                                                <div class="col-6">
-                                                    <label for="idquantidade" class="form-label">CPF</label>
-                                                    <input type="number" name="cpf" maxlength="14" minlength="11" id="idcartao" class="form-control client">
-                                                </div>
-
-                                                <div class="col-5">
-                                                    <label for="idquantidade" class="form-label">Números do cartão</label>
-                                                    <input type="text" name="numeros" maxlength="16" id="idcartao" class="form-control client">
-                                                </div>
-
-                                                <div class="col-2">
-                                                    <label for="idquantidade" class="form-label">3 Números</label>
-                                                    <input type="number" name="3numeros" minlength="3" maxlength="3" id="idcartao" class="form-control client">
-                                                </div>
-
-                                                <div class="col-2">
-                                                    <label for="idquantidade" class="form-label">Agência</label>
-                                                    <input type="text" name="agencia" id="idcartao" class="form-control client">
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <label for="idquantidade" class="form-label">DATA</label>
-                                                    <input type="text" name="data" minlength="4" maxlength="5" id="idcartao" class="form-control client">
-                                                </div>
-                                            <?php endif; ?>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-4 bg-warning">
-                                    <div class="separator"></div>
-                                    <button type="submit">Finalizar Compra</button>
-                                </div>
-                            </div>
-                        </div>
                         <!-- modal Login -->
                         <div>
                             <div class="modal fade" id="login" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content" id="loginModal">
-                                        <div class="modal-header">
-                                            <h1 class="fs-5" id="exampleModalLabel">Modal title</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
+                                        <h1 class="text-center fs-1 mt-5">Login</h1>
+                                        <form action="incs/LoginConfirm.php" class="p-5" method="post">
+                                            <label for="" class="form-label">Email:</label>    
+                                            <input type="text" class="form-control mb-5" name='cliente' placeholder="Email">
+                                            <label for="" class="form-label">Senha:</label>
+                                            <input class="form-control mb-5" type="password" name="senha" placeholder="Senha" id="">
+                                            <button type="submit" class="btn btn-primary float-end">Confirmar</button>
+                                        </form>
+                                        <?php if(isset($_REQUEST['msg'])):?>
+                                            <div class="alert alert-danger mx-4">
+                                                <?=$_REQUEST['msg']?>
+                                            </div>
+                                        <?php endif;?>
                                     </div>
                                 </div>
                             </div>
