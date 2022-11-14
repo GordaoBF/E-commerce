@@ -21,23 +21,22 @@ $cartaoDAO = new CartaoDAO();
         header("Location:../Lista.php?msg= Usuario Removido");
     }elseif (isset($_GET['tipo']) && $_GET['tipo']=='cliente' && isset($_GET['acao']) && $_GET['acao']=='remover'){
         $clienteDAO->remover($_GET['p']); 
-        $cartaoDAO->remover($_GET['p']);
 
         header("Location:../Lista.php?msg=Cliente Removido");
-    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='usuario' && isset($_GET['acao']) && $_GET['acao']=='editar' && $_POST['senha']!=$_POST['senha2']){
+    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='usuario' && $_GET['acao']=='editar' && $_POST['senha']!=$_POST['senha2']){
 
         header("Location:../Lista.php?msg=Senha e/ou Login Incorretos");
-    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='usuario' && isset($_GET['acao']) && $_GET['acao']=='editar' && $_POST['senha']==$_POST['senha2']){
+    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='usuario' && $_GET['acao']=='editar' && $_POST['senha']==$_POST['senha2']){
         $usuarioDAO->alterar($_POST); 
 
         header("Location:../Lista.php?msg=Usuario Alterado");
-    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='cliente' && isset($_GET['acao']) && $_GET['acao']=='editar' && $_POST['senha']!=$_POST['senha2']){
-
-        header("Location:../Lista.php?msg=Senha e/ou Email Incorretos");
-    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='cliente' && isset($_GET['acao']) && $_GET['acao']=='editar' && $_POST['senha']==$_POST['senha2']){
-        $clienteDAO->alterar($_POST);
+    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='cliente' && $_GET['acao']=='editar' && $_POST['senha']!=$_POST['senha2']){
+        $p = $_POST['p'];
+        header("Location:../Editar.php?acao=editar&p=13&tipo=cliente&msg=Senha e/ou Email Incorretos");
+    }elseif (isset($_GET['tipo']) && $_GET['tipo']=='cliente' && $_GET['acao']=='editar' && $_POST['senha']==$_POST['senha2']){
+        $sql = $clienteDAO->alterar($_POST);
         
-        header("Location:../Lista.php?msg=Cliente Alterado");
+        header("Location:../Lista.php?msg=Cliente Alterado&m=".$sql."");
     }elseif (isset($_GET['tipo']) && $_GET['tipo']=='produto' && $_GET['acao']=='editar'){
         $produtoDAO->alterar($_POST);
 

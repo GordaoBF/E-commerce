@@ -16,12 +16,15 @@
     }
     ?>  
         <?php if (!isset($_GET['msg'])):  ?>
-        <?php elseif (isset($msg) && ($msg=='Usuario Cadastrado' || $msg=='Cliente Cadastrado' || $msg=='Produto Cadastrado' || $msg=='Produto Removido' || $msg=='Cliente Removido' || $msg=='Usuario Removido')):  ?>
+        <?php elseif (isset($msg) && ($msg=='Usuario Cadastrado' || $msg=='Cliente Cadastrado' || $msg=='Produto Cadastrado' || $msg=='Produto Removido' || $msg=='Cliente Removido' || $msg=='Usuario Removido' || $msg=='Usuario Alterado' || $msg=='Cliente Alterado' || $msg=='Produto Alterado')):  ?>
             <div class="alert alert-primary m-0 mb-3" role="alert">
                 <?=$msg?>
             </div>
-        <?php endif; 
-        ?>
+        <?php else:  ?>
+            <div class="alert alert-danger m-0 mb-3" role="alert">
+                <?=$msg?>
+            </div>
+        <?php endif; ?>
         <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly m-0 p-3">
 
             <div class="form-check ">
@@ -101,7 +104,7 @@
                         <td class='decri'><?= $us['login'] ?></td>
                         <td class='decri'><?= $us['senha'] ?></td>
                         <td>
-                            <a href="Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&tipo=usuario" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&tipo=usuario" class="btn btn-danger btn-sm">Remover</a>
                             <a href="Editar.php?acao=editar&p=<?= $us['idusuarios'] ?>&tipo=usuario" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
@@ -181,7 +184,7 @@
                     </td>
                     <td>
                         <!--<a href="" class="btn btn-success btn-sm">Editar</a>-->
-                        <a href="Confirmacao.php?acao=remover&p=<?= $produto['idprodutos'] ?>&tipo=produto"
+                        <a href="incs/Confirmacao.php?acao=remover&p=<?= $produto['idprodutos'] ?>&tipo=produto"
                             class="btn btn-danger btn-sm">Remover</a>
                         <a href="Editar.php?acao=editar&p=<?= $produto['idprodutos'] ?>&tipo=produto"
                             class="btn btn-success btn-sm">Editar</a>
@@ -245,7 +248,7 @@
                         <td class='decri'><?= $cl['cpf'] ?></td>
                         <td class='decri'><?= $cl['idcartao'] ?></td>
                         <td>
-                            <a href="Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&tipo=cliente" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&tipo=cliente" class="btn btn-danger btn-sm">Remover</a>
                             <a href="Editar.php?acao=editar&p=<?= $cl['idclientes'] ?>&tipo=cliente" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>

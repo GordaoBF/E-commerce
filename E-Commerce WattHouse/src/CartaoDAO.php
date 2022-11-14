@@ -15,10 +15,10 @@
             $resultado = $ConexaoBD->query($sql);
             return $resultado->fetchAll(PDO::FETCH_ASSOC);
         }
-        function remover(){
+        function remover($id){
             //conectar
             $conexao = ConexaoBD::conectar();
-            $sql = "delete FROM watthouse.cartao as ca, watthouse.clientes as cl where ca.idclientes=cl.idclientes;";
+            $sql = "delete FROM watthouse.cartao as ca, watthouse.clientes as cl where ca.idcliente=cl.idcliente;";
             $conexao->exec($sql);
         }
     }

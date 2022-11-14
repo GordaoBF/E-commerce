@@ -15,7 +15,7 @@
             $ConexaoBD = ConexaoBD::conectar();
             $sql = "select * from watthouse.usuarios where idusuarios='{$_GET['p']}';";
             $resultado = $ConexaoBD->query($sql);
-            return $resultado->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado->fetch(PDO::FETCH_ASSOC);
         }
         static function ConsultaLogin($login){
             // conecto com o banco de dados

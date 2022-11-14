@@ -50,23 +50,20 @@
 
             return $clientes;
         }
-        function alterar($dados){
+        static function alterar($dados){
             //conectar
             $conexao = ConexaoBD::conectar();
+            $id = $dados['p'];
             $senha = md5($dados['senha']);
-            
-            $sql = "update watthouse.clientes set nome='{$dados['nome']}' where idclientes='".$dados['p']."';";
+            $sql = "update watthouse.clientes set email='{$dados['email']}', senha='{$senha}', nome='{$dados['nome']}' where idclientes='$id'";
             $conexao->exec($sql);
-
-            $sql2 = "update watthouse.cartao set nomecartao='{$dados['nomecartao']}', agencia='{$dados['agencia']}', 3numeros='{$dados['3numeros']}', numeros='{$dados['numeros']}', data='{$dados['data']}' where idcartao={$dados['idcartao']}";
-            $conexao->exec($sql2);
+            return $sql;
         }
         static function ConsultaID($id){
             //conectar
-            $id = $_REQUEST['p'];
             $conexao = ConexaoBD::conectar();
             
-            $sql = "select * from watthouse.clientes as cl, watthouse.cartao as ca where cl.idcartao=ca.idcartao and cl.idclientes={$id};";
+            $sql = "select * from watthouse.clientes as cl, watthouse.cartao as ca where cl.idcartao=ca.idcartao and cl.idclientes='".$id."';";
 
             $resultado = $conexao->query($sql);
             $cliente = $resultado->fetch(PDO::FETCH_ASSOC);
@@ -90,7 +87,7 @@
         function remover($id){
             //conectar
             $conexao = ConexaoBD::conectar();
-            $sql = "delete from watthouse.clientes where idclientes='$id'";
+            $sql = "delete from watthouse.clientes where idclientes='{$id}';";
             $conexao->exec($sql);
         }
     }

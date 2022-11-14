@@ -86,7 +86,7 @@ $clienteDAO = new clienteDAO();
     </form>
 
     <?php elseif(isset($_GET['tipo']) && $_GET['tipo']=='usuario'): 
-        $us = UsuarioDAO::ConsultaID($_GET['p']);?>
+        $us = $usuarioDAO->ConsultaID($_GET['p']);?>
     <form method="POST" enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=usuario&acao=editar" class="container w-75 p-4">
         <input type="hidden" name='p' value='<?=$_GET['p']?>'>
         <div class="mb-3">
@@ -123,7 +123,7 @@ $clienteDAO = new clienteDAO();
     </form>
     <?php elseif (isset($_GET['tipo']) && $_GET['tipo']=="cliente") :
         $cl = $clienteDAO->ConsultaID($_GET['p']);
-            
+        var_dump($cl);
         ?>
         <form method="POST"  enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=cliente&acao=editar" class="container w-75">
             <h2 class="my-4 text-center">Alterar de Cliente</h2>
