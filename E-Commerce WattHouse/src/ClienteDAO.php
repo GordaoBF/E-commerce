@@ -87,7 +87,7 @@
         function remover($id){
             //conectar
             $conexao = ConexaoBD::conectar();
-            $sql = "delete from watthouse.clientes where idclientes='{$id}';";
+            $sql = "delete from watthouse.clientes where idclientes='{$id}';"; 
             $conexao->exec($sql);
         }
     }
