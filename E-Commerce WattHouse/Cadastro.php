@@ -57,8 +57,8 @@
             <form method="POST" id="usuario" enctype="multipart/form-data" action="incs/Confirmacao.php?acao=cadastro" class="nmostrar container w-75">
                 <h2  class="my-4 text-center">Cadastro de Usuarios</h2>
                 
-
                 <input type="hidden" id="switch" value="2" name="switch">
+                <input type="hidden" value="<?=$server?>" name="server">
 
                 <div class="mb-3">
                     <label for="idnome" class="form-label">Nome do Usuario</label>
@@ -90,6 +90,7 @@
             <h2 class="my-4 text-center">Cadastro de Produtos</h2>
 
                 <input type="hidden" value="3" name="switch">
+                <input type="hidden" value="<?=$server?>" name="server">
 
                 <div class="mb-3">
                     <label for="idnome" class="form-label">Nome do produto</label>
@@ -154,6 +155,7 @@
                 <h2 class="my-4 text-center">Cadastro de Cliente</h2>
 
                 <input type="hidden" value="1" name="switch">
+                <input type="hidden" value="<?=$server?>" name="server">
 
                 <div class="mb-3">
                     <label for="idnome" class="form-label">Nome do Usuario</label>

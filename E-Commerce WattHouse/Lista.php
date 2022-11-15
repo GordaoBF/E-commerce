@@ -104,8 +104,8 @@
                         <td class='decri'><?= $us['login'] ?></td>
                         <td class='decri'><?= $us['senha'] ?></td>
                         <td>
-                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&tipo=usuario" class="btn btn-danger btn-sm">Remover</a>
-                            <a href="Editar.php?acao=editar&p=<?= $us['idusuarios'] ?>&tipo=usuario" class="btn btn-success btn-sm">Editar</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&switch=2" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="Editar.php?acao=editar&p=<?= $us['idusuarios'] ?>switch=2" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
                     <?php
@@ -184,9 +184,9 @@
                     </td>
                     <td>
                         <!--<a href="" class="btn btn-success btn-sm">Editar</a>-->
-                        <a href="incs/Confirmacao.php?acao=remover&p=<?= $produto['idprodutos'] ?>&tipo=produto"
+                        <a href="incs/Confirmacao.php?acao=remover&p=<?= $produto['idprodutos'] ?>&switch=3"
                             class="btn btn-danger btn-sm">Remover</a>
-                        <a href="Editar.php?acao=editar&p=<?= $produto['idprodutos'] ?>&tipo=produto"
+                        <a href="Editar.php?acao=editar&p=<?= $produto['idprodutos'] ?>&switch=3"
                             class="btn btn-success btn-sm">Editar</a>
                     </td>
                 </tr>
@@ -248,8 +248,8 @@
                         <td class='decri'><?= $cl['cpf'] ?></td>
                         <td class='decri'><?= $cl['idcartao'] ?></td>
                         <td>
-                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&tipo=cliente" class="btn btn-danger btn-sm">Remover</a>
-                            <a href="Editar.php?acao=editar&p=<?= $cl['idclientes'] ?>&tipo=cliente" class="btn btn-success btn-sm">Editar</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&switch=1" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="Editar.php?acao=editar&p=<?= $cl['idclientes'] ?>&switch=1" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
                     <?php

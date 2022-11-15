@@ -77,27 +77,15 @@ header #cima{height: 20vh;}
 
 #des{z-index: 5;}
 
-/* offcanva e modal*/
-.menu{
-    position: relative;
-    top: 34%;
-}
-.modal-login{
-    width: 45vwx;
-}
-.modal-log{
-    align-self: center;
-}
-#loginModal{
-    width: 50vw;
-    height: 60vh;
-}
-#cadastro{width:90vw;}
+/* define o tamanho do modal login*/
+#login .modal-dialog{width: 30vw; height: auto; max-width: none;}
+
+/* define o tamanho do modal cadastro  */
+#cadastro .modal-dialog{width: 60vw; height: auto; max-width: none;}
 
 /* formatação */
-.btn:hover{
-    box-shadow: 2px;
-}
+.btn:hover{box-shadow: 2px;}
+
 /* define o tamanho desses bagui e que eles e escodem */
 .info, .title, .but, .preco{width: 100%; max-height: 70px; overflow: hidden;}
 
