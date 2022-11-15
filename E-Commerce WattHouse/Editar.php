@@ -7,11 +7,11 @@ require_once "src/ClienteDAO.php";
 
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
-$clienteDAO = new clienteDAO();
-
+$clienteDAO = new ClienteDAO();
+$categoriaDAO = new CategoriaDAO();
 ?>
     <?php if(isset($_GET['tipo']) && ($_GET['tipo']=='produto')): 
-        $it= ProdutoDAO::ConsultaID($_GET['p']);?>
+        $it = $produtoDAO->ConsultaID($_GET['p']);?>
 
         <h2 class="mb-4 text-center">Alterar Produto</h2>
     <form method="POST" enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=produto&acao=editar" class="container w-75 p-4">
@@ -31,7 +31,6 @@ $clienteDAO = new clienteDAO();
             <label for="idcategoriasid" class="form-label">Categoria</label>
             <select name="idcategorias" id="idcategoriasid" value="<?=($it['idcategorias'])?>" class="form-select" required>
                 <?php
-                    $categoriaDAO = new CategoriaDAO();
                     $categorias = $categoriaDAO->ConsultaCat();
                     foreach ($categorias as $categoria):
                         if($it['idcategorias']==$categoria['idcategorias']): ?>

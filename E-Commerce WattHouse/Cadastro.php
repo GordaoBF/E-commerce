@@ -54,7 +54,7 @@
         </form>
 
         <div class="usuario">
-            <form method="POST" id="usuario" enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=usuario&acao=cadastro" class="nmostrar container w-75">
+            <form method="POST" id="usuario" enctype="multipart/form-data" action="incs/Confirmacao.php?acao=cadastro" class="nmostrar container w-75">
                 <h2  class="my-4 text-center">Cadastro de Usuarios</h2>
                 
 
@@ -86,7 +86,7 @@
         </div>
         
         <div class="produto">
-            <form method="POST" id="produto" enctype="multipart/form-data" action="incs/Confirmacao.php" class="nmostrar container w-75">
+            <form method="POST" id="produto" enctype="multipart/form-data" action="incs/Confirmacao.php?acao=cadastro" class="nmostrar container w-75">
             <h2 class="my-4 text-center">Cadastro de Produtos</h2>
 
                 <input type="hidden" value="3" name="switch">
@@ -150,7 +150,7 @@
             
         </div>
         <div class="cliente w-100"  >
-            <form method="POST" id="cliente"  enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=usuario&acao=cadastro" class="nmostrar container w-75">
+            <form method="POST" id="cliente"  enctype="multipart/form-data" action="incs/Confirmacao.php?&acao=cadastro" class="nmostrar container w-75">
                 <h2 class="my-4 text-center">Cadastro de Cliente</h2>
 
                 <input type="hidden" value="1" name="switch">

@@ -26,11 +26,11 @@ header #cima{height: 20vh;}
 .card-b{height: 200px; max-height: 200px;}
 .card-h{height: 180px; max-height: 180px;}
 
-/* tamanhos do offcanva carrinho */
+/* tamanhos do offcanva carrinho*/
 #offCarrinho{width: 50vw;}
 
-/* tamanhos do offcanva de Finalizar Compra e tb define que ele fica no meio*/
-#offFinalizar{height: 100vw; width: 75vw; left: 25vmin;}
+/* tamanhos do offcanva de Finalizar Compra/Cadastro e tb define que ele fica no meio*/
+#offFinalizar, #offCadastro{height: 100vw; width: 75vw; left: 25vmin;}
 
 /* tentando definir o tamanho do img no card */
 .card-b h6{object-fit: contain;}
@@ -88,14 +88,11 @@ header #cima{height: 20vh;}
 .modal-log{
     align-self: center;
 }
-.offcanvas-shop{
-    width: 100%;
-    max-width: 500px;
-}
 #loginModal{
     width: 50vw;
-    height: 70vh;
+    height: 60vh;
 }
+#cadastro{width:90vw;}
 
 /* formatação */
 .btn:hover{
