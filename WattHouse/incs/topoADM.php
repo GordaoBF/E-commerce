@@ -2,6 +2,9 @@
     session_start();
     include "incs/ValidarSessao.php";
     $server = $_SERVER['REQUEST_URI'];
+    $serv = $_SERVER['PHP_SELF'];
+    echo $server."<br>";
+    echo $serv;
 ?>
 <!DOCTYPE html>
 <html>
