@@ -25,38 +25,8 @@
                 <?=$msg?>
             </div>
         <?php endif; ?>
-        <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly m-0 p-3">
-
-            <div class="form-check ">
-            <?php if (isset($_GET['tipo']) && $_GET['tipo']=='cliente'):?>
-                <input type="radio" id="switch"  name='switch' onclick="checkedBtnList()" class="form-check-input " checked>
-                <label for="switch" for="switch" class="form-check-label">Cliente</label>
-            <?php else: ?>
-                <input type="radio" id="switch"  name='switch' onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch" for="switch" class="form-check-label">Cliente</label>
-            <?php endif; ?>
-            </div>
-            
-            <div class="form-check ">
-            <?php if (isset($_GET['tipo']) && $_GET['tipo']=='usuario'):?>
-                <input type="radio" id="switch2" name='switch'  onclick="checkedBtnList()" class="form-check-input "checked>
-                <label for="switch2" for="switch2" class="form-check-label ">Usuário</label>
-            <?php else: ?>
-                <input type="radio" id="switch2" name='switch'  onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch2" for="switch2" class="form-check-label">Usuário</label>
-            <?php endif; ?>
-            </div>
-
-            <div class="form-check">
-            <?php if (isset($_GET['tipo']) && $_GET['tipo']=='produto'):?>
-                <input type="radio" id="switch3" name='switch'  onclick="checkedBtnList()" class="form-check-input " checked>
-                <label for="switch3" class="form-check-label ">Produto</label>
-            <?php else: ?>
-                <input type="radio" id="switch3" name='switch'  onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch3" class="form-check-label ">Produto</label>
-            <?php endif; ?>
-            </div>
-        </form>
+        
+        <?php include 'incs/selection.php';?>
 
         <div class="usuario nmostrar"id='usuario'>
         <form class="container p-3 w-50 border rounded my-3">
@@ -104,8 +74,8 @@
                         <td class='decri'><?= $us['login'] ?></td>
                         <td class='decri'><?= $us['senha'] ?></td>
                         <td>
-                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&switch=2" class="btn btn-danger btn-sm">Remover</a>
-                            <a href="Editar.php?acao=editar&p=<?= $us['idusuarios'] ?>switch=2" class="btn btn-success btn-sm">Editar</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $us['idusuarios'] ?>&switch=2&server=<?=$server?>" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="Editar.php?acao=editar&tipo=usuario&p=<?= $us['idusuarios'] ?>&switch=2&server=<?=$server?>" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
                     <?php
@@ -184,9 +154,9 @@
                     </td>
                     <td>
                         <!--<a href="" class="btn btn-success btn-sm">Editar</a>-->
-                        <a href="incs/Confirmacao.php?acao=remover&p=<?= $produto['idprodutos'] ?>&switch=3"
+                        <a href="incs/Confirmacao.php?acao=remover&tipo=&p=<?= $produto['idprodutos'] ?>&switch=3&server=<?=$server?>"
                             class="btn btn-danger btn-sm">Remover</a>
-                        <a href="Editar.php?acao=editar&p=<?= $produto['idprodutos'] ?>&switch=3"
+                        <a href="Editar.php?acao=editar&tipo=produto&p=<?= $produto['idprodutos'] ?>&switch=3&server=<?=$server?>"
                             class="btn btn-success btn-sm">Editar</a>
                     </td>
                 </tr>
@@ -248,8 +218,8 @@
                         <td class='decri'><?= $cl['cpf'] ?></td>
                         <td class='decri'><?= $cl['idcartao'] ?></td>
                         <td>
-                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&switch=1" class="btn btn-danger btn-sm">Remover</a>
-                            <a href="Editar.php?acao=editar&p=<?= $cl['idclientes'] ?>&switch=1" class="btn btn-success btn-sm">Editar</a>
+                            <a href="incs/Confirmacao.php?acao=remover&p=<?= $cl['idclientes'] ?>&switch=1&server=<?=$server?>" class="btn btn-danger btn-sm">Remover</a>
+                            <a href="Editar.php?acao=editar&tipo=cliente&p=<?= $cl['idclientes'] ?>&switch=1&server=<?=$server?>" class="btn btn-success btn-sm">Editar</a>
                         </td>
                     </tr>
                     <?php

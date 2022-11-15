@@ -2,25 +2,6 @@
     session_start();
     include "incs/ValidarSessao.php";
     $server = $_SERVER['REQUEST_URI'];
-    // define o servidor que vai retornar
-    if (isset($_POST['server'])) {
-        if (preg_match('/ADM/',$_POST['server'])) {
-            $server = 'ADM';
-            echo $server;
-        }elseif (preg_match('/Home/',$_POST['server'])) {
-            $server = 'Home';
-        }elseif (preg_match('/Items/',$_POST['server'])) {
-            $server = 'Items';
-        }elseif (preg_match('/Product/',$_POST['server'])) {
-            $server = 'Product';
-        }elseif (preg_match('/Cadastro/',$_POST['server'])) {
-            $server = 'Cadastro';
-        }elseif (preg_match('/Editar/',$_POST['server'])) {
-            $server = 'Editar';
-        }elseif (preg_match('/Lista/',$_POST['server'])) {
-            $server = 'Lista';
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html>

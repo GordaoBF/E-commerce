@@ -19,39 +19,8 @@
                 <?=$msg?>
             </div>
         <?php endif;?>
-        <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly m-0 p-2">
 
-            <div class="form-check ">
-                <?php if (isset($_GET['tipo']) && $_GET['tipo']=='cliente'):?>
-                <input type="radio" id="switch"  name='switch' onclick="checkedBtnList()" class="form-check-input " checked>
-                <label for="switch" class="form-check-label">Cliente</label>
-                <?php else: ?>
-                <input type="radio" id="switch"  name='switch' onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch" class="form-check-label">Cliente</label>
-                <?php endif; ?>
-            </div>
-            
-            <div class="form-check">
-            <?php if (isset($_GET['tipo']) && $_GET['tipo']=='usuario'):?>
-                <input type="radio" id="switch2" name='switch'  onclick="checkedBtnList()" class="form-check-input "checked>
-                <label for="switch2" class="form-check-label ">Usuário</label>
-            <?php else: ?>
-                <input type="radio" id="switch2" name='switch'  onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch2" class="form-check-label ">Usuário</label>
-            <?php endif; ?>
-            </div>
-
-            <div class="form-check">
-            <?php if (isset($_GET['tipo']) && $_GET['tipo']=='produto'):?>
-                <input type="radio" id="switch3" name='switch'  onclick="checkedBtnList()" class="form-check-input " checked>
-                <label for="switch3" class="form-check-label ">Produto</label>
-            <?php else: ?>
-                <input type="radio" id="switch3" name='switch'  onclick="checkedBtnList()" class="form-check-input ">
-                <label for="switch3" class="form-check-label ">Produto</label>
-            <?php endif; ?>
-            </div>
-            
-        </form>
+        <?php include 'incs/selection.php';?>
 
         <div class="usuario">
             <form method="POST" id="usuario" enctype="multipart/form-data" action="incs/Confirmacao.php?acao=cadastro" class="nmostrar container w-75">

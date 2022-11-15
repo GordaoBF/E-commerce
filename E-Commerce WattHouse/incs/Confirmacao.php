@@ -9,6 +9,25 @@ $usuarioDAO = new UsuarioDAO();
 $clienteDAO = new ClienteDAO();
 $cartaoDAO = new CartaoDAO();
 
+if (isset($_REQUEST['server'])) {
+    if (preg_match('/ADM/',$_REQUEST['server'])) {
+        $server = 'ADM';
+        echo $server;
+    }elseif (preg_match('/Home/',$_REQUEST['server'])) {
+        $server = 'Home';
+    }elseif (preg_match('/Items/',$_REQUEST['server'])) {
+        $server = 'Items';
+    }elseif (preg_match('/Product/',$_REQUEST['server'])) {
+        $server = 'Product';
+    }elseif (preg_match('/Cadastro/',$_REQUEST['server'])) {
+        $server = 'Cadastro';
+    }elseif (preg_match('/Editar/',$_REQUEST['server'])) {
+        $server = 'Editar';
+    }elseif (preg_match('/Lista/',$_REQUEST['server'])) {
+        $server = 'Lista';
+    }
+}
+
 
 // os ifs de cada tipo de cadastro
 if(isset($_REQUEST['switch']) && $_REQUEST['switch']==1){
