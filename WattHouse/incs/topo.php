@@ -32,14 +32,12 @@ include "incs/ValidarSessao.php";
     <!-- cabeçalho -->
     <header id="header">
         <!-- parte de cima do header -->
-        <div class="container d-flex justify-content-between" id="cima">
+        <div class="container d-flex" id="cima">
             <!-- logo e botão -->
-            <div class="navbar" id="logo">
-                <a href="Home.php"><img src="img/WATTHOUSE_White.png" alt="WattHouse"></a>
-            </div>
+            <a href="Home.php" id='logo'><img src="img/WATTHOUSE_White.png" alt="WattHouse"></a>
             <!-- barra de pesquisa -->
             <div class="navbar w-100">
-                <form class="w-100 d-flex flex-row-reverse" action="Items.php">
+                <form class="d-flex w-100 flex-row-reverse" action="Items.php">
                     <input class="form-control rounded-pill py-3 me-2 search" name="chave" type="search" placeholder="Pesquisar" aria-describedby="search-button">
                 </form>
             </div>
@@ -231,8 +229,21 @@ include "incs/ValidarSessao.php";
                                 </div>
                             
                             <?php endif; ?>
-                        <!-- botão modal login -->
+                        <!-- botão conta cliente -->
+                        <?php if(!isset($_SESSION['cliente'])): ?>
                         <a href="#login" role="button" class="text-light text-decoration-none pe-3" data-bs-toggle="modal"><img src="img/profile-icon.png" alt="" width="35px" title="Fazer login"></a>
+                        <?php else: ?>
+                            <div class="dropdown">
+                                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="img/profile-icon.png" alt="" width="35px" title="Fazer login">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                         <!-- botao do carrinho -->
                         <div>
                             <a href="#offCarrinho" class="m-0 p-0 position-relative" data-bs-toggle="offcanvas"><img src="img/shopping-cart.png" alt="" width="35px" title="Carrinho">

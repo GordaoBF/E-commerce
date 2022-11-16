@@ -15,7 +15,11 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 <!-- jquery -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-                        
+
+<script type="text/javascript">
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 <!-- Script de abrir Login quando não conectado ná conta -->
 <?php if(!isset($_SESSION['cliente'])):?>
 <script type="text/javascript">

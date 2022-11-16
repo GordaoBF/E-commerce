@@ -6,10 +6,10 @@
 html {font-family: 'Thasadith', sans-serif; font-size: medium;}
 
 /* o header da pagina principal via ter esse tamanho fixo */
-header #cima{height: 20vh;}
+header #cima{height: 20vh; width: 80vw;}
 
 /* search vai ter esse width */
-.search{width: 85%;}
+.search{width: 80%; height: 6vh;}
 
 /* define que a iamgem do logo vai ocupar esse espaço */
 #logo{width: 150px; height: 150px;}
