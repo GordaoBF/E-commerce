@@ -121,8 +121,8 @@ if(isset($_REQUEST['switch']) && $_REQUEST['switch']==1){
 
         header($ht);
     }
-}elseif (isset($_REQUEST['switch']) && $_REQUEST['switch']==4) {
-    $compraDAO->registrarCompra($S); 
+}elseif(isset($_REQUEST['switch']) && $_REQUEST['switch']==4){
+    $compraDAO->registrarCompra($_SESSION);
 }
 
 // esses ifs definem apagar e editar

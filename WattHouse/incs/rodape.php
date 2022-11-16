@@ -21,7 +21,7 @@
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 <!-- Script de abrir Login quando não conectado ná conta -->
-<?php if(!isset($_SESSION['cliente'])):?>
+<?php if(!isset($_SESSION['idclientes'])):?>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#login').modal('show');

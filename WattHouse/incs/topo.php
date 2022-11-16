@@ -5,6 +5,7 @@ require_once "src/ProdutoDAO.php";
 require_once "src/CategoriaDAO.php";
 require_once "src/UsuarioDAO.php";
 require_once "src/ClienteDAO.php";
+require_once "src/CompraDAO.php";
 $server = $_SERVER['REQUEST_URI'];
 $title = $_SERVER['PHP_SELF'];
 include "incs/ValidarSessao.php";
@@ -116,10 +117,12 @@ include "incs/ValidarSessao.php";
                                         $sub = 0;
                                         $total = 0;
 
-                                        foreach ($carrinho as $car) :
-                                            $it = $produtoDAO->ConsultaID($car['idprodutos']);
-                                            $sub = $car['quantidade'] * $it['preco'];
-                                            $total += $sub; ?>
+                                        foreach ($carrinho as $car => $i) :
+                                            $it = $produtoDAO->ConsultaID($i['idprodutos']);
+                                            $sub = $i['quantidade'] * $it['preco'];
+                                            $total += $sub;
+                                            $i['preco'] = $it['preco'];
+                                            $carrinho[$car] = $i; ?>
                                             <tr>
                                                 <td class="align-middle">
                                                     <div class="img-car">
@@ -128,7 +131,7 @@ include "incs/ValidarSessao.php";
                                                 </td>
                                                 <td class="align-middle"><?= $it['nome'] ?></td>
                                                 <td class="align-middle">
-                                                    <p class="text-center px-2 m-0"><?= $car['quantidade'] ?></p>
+                                                    <p class="text-center px-2 m-0"><?= $i['quantidade'] ?></p>
                                                 </td>
                                                 <td class="align-middle">R$ <?= number_format($it['preco'], 2, ",", ".") ?></td>
                                                 <td class="align-middle">R$ <?= number_format($sub, 2, ',', '.') ?></td>
@@ -144,7 +147,7 @@ include "incs/ValidarSessao.php";
                                         <?php endforeach; ?>
                                     </table>
                                 </div>
-                                <?php $_SESSION['total'] = $total; ?>
+                                <?php $_SESSION['total'] = $total; $_SESSION['carrinho'] = $carrinho;?>
                                 <!-- total -->
                                 <p class="">TOTAL: R$ <?= number_format($total, 2, ",", ".") ?></p>
                                 <div class="col-12">
@@ -152,9 +155,9 @@ include "incs/ValidarSessao.php";
                                         <input type="hidden" name="operacao" value="limpar">
                                         <button type='submit' class="btn btn-secondary">Esvaziar Carrinho</button>
                                     </form>
-                        <?php if (!isset($_SESSION['cliente'])) : ?>
+                        <?php if (!isset($_SESSION['idclientes'])) : ?>
                                     <form action="incs/LoginConfirm.php" class="float-end" method="post">
-                                        <input type="hidden" name="cliente" value="<?= $_SESSION['cliente']??1; ?>">
+                                        <input type="hidden" name="cliente" value="<?= $_SESSION['idclientes']??1; ?>">
                                         <input type="hidden" name="server" value="<?=$server?>">
                                         <button type='submit' class="btn btn-primary">Finalizar Compra</button>
                                     </form>
@@ -164,7 +167,7 @@ include "incs/ValidarSessao.php";
                                 </div>
                             </div>
                         </div>
-                        <?php if (isset($_SESSION['cliente']) && $_SESSION['carrinho']!=null) : ?>
+                        <?php if (isset($_SESSION['idclientes']) && $_SESSION['carrinho']!=null) : ?>
                             <!-- offcanvas finalizar compra -->
                             <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offFinalizar">
                                 <div class="offcanvas-header">
@@ -213,7 +216,7 @@ include "incs/ValidarSessao.php";
                                         </div>
                                         <div class="col-4 separator">
                                             <div class="bg-light" id="fin">
-                                            <?php $_SESSION['session'] = $_SESSION;; $cl = ClienteDAO::ConsultaID($_SESSION['cliente']) ?>
+                                            <?php $_SESSION['session'] = $_SESSION;; $cl = ClienteDAO::ConsultaID($_SESSION['idclientes']) ?>
                                                 <h2 class="text-center py-3">DADOS DO CLIENTE</h2>
                                                 <h5 class="p-2">Nome: <?=$cl['nome']?></h5>
                                                 <h5 class="p-2">Email: <?=$cl['email']?></h5>
@@ -222,9 +225,9 @@ include "incs/ValidarSessao.php";
                                                 <h5 class="p-2">Números do Cartão: <?=$cl['numeros']?></h5>
                                             </div>
                                             <div class="embaixo">
-                                            <form action="incs/Confirmacao.php" class="row m-0 p-0" method="post">
+                                            <form action="finalizar_compra.php" class="row m-0 p-0" method="post">
+                                                <input type="hidden" name="server" value="<?=$server?>">
                                                 <input type="hidden" name="switch" value="4">
-                                                <input type="hidden" name="session" value="<?=$_SESSION['session']?>">
                                                 <button type="submit" class="float-end btn btn-primary">Pagar</button>
                                             </form>
                                             </div>
@@ -234,7 +237,7 @@ include "incs/ValidarSessao.php";
                             
                             <?php endif; ?>
                         <!-- botão conta cliente -->
-                        <?php if(!isset($_SESSION['cliente'])): ?>
+                        <?php if(!isset($_SESSION['idclientes'])): ?>
                         <a href="#login" role="button" class="text-light text-decoration-none pe-3" data-bs-toggle="modal"><img src="img/profile-icon.png" alt="" width="35px" title="Fazer login"></a>
                         <?php else: ?>
                             <div class="dropdown">

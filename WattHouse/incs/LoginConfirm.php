@@ -38,7 +38,7 @@ if(isset($_POST['login']) && !isset($_POST['email'])){
     }
 }elseif(!isset($_POST['login']) && isset($_POST['email'])){
     if ($cl = $clienteDAO->Validar($_POST)) {
-        $_SESSION['cliente'] = $cl['idclientes'];
+        $_SESSION['idclientes'] = $cl['idclientes'];
         $ht = "location:../".$server.".php";
         
         header($ht);
