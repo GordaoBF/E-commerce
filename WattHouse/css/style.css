@@ -37,7 +37,7 @@ header #cima{height: 20vh;}
 #offFinalizar, #offCadastro{height: 100vw; width: 75vw; left: 25vmin;}
 
 #fin{height: 90%; width: 100%;}
-.embaixo{height:10%; width: 100%; float: ;}
+.embaixo{height:10%; width: 100%;}
 
 /* tentando definir o tamanho do img no card */
 .card-b h6{object-fit: contain;}
