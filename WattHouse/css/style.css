@@ -111,12 +111,13 @@ header #cima{height: 20vh; width: 80vw;}
 }
 
 /* define que a lista vai ter esse tamanho na tela do usuario e que vai poder ser scrolavel */
-.lista{max-height: 50vh; min-height: 10vh; overflow-y: hidden;}
-.lista::-webkit-scrollbar {display: none;}
+.lista{max-height: 75vh; min-height: 10vh; overflow-y: hidden;}
+.lista::-webkit-scrollbar, .lista-Fin::-webkit-scrollbar{display: none;}
 
-/* define que a lista vai ter esse tamanho na tela do usuario e que vai poder ser scrolavel */
-.lista:hover{overflow-y: scroll;}
+.lista-Fin{max-height: 70vh; min-height: 30vh; overflow-y: hidden;}
 
+/* define que a lista e a lista do finalizar vai ter esse tamanho na tela do usuario e que vai poder ser scrolavel */
+.lista:hover, .lista-Fin:hover{overflow-y: scroll;}
 
 /* define que o overflow n aparece */
 .decri {overflow: hidden;}

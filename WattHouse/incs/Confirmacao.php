@@ -3,11 +3,13 @@ require_once "../src/ProdutoDAO.php";
 require_once "../src/UsuarioDAO.php";
 require_once "../src/ClienteDAO.php";
 require_once "../src/CartaoDAO.php";
+require_once "../src/CompraDAO.php";
 
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
 $clienteDAO = new ClienteDAO();
 $cartaoDAO = new CartaoDAO();
+$compraDAO = new CompraDAO();
 
 if (isset($_REQUEST['server'])) {
     if (preg_match('/ADM/',$_REQUEST['server'])) {
@@ -28,8 +30,6 @@ if (isset($_REQUEST['server'])) {
     }
 }
 
-
-// os ifs de cada tipo de cadastro
 if(isset($_REQUEST['switch']) && $_REQUEST['switch']==1){
     if (isset($_GET['acao']) && $_GET['acao']=='cadastro') {
         if ($_POST['senha']!=$_POST['senha2']) {
@@ -121,6 +121,8 @@ if(isset($_REQUEST['switch']) && $_REQUEST['switch']==1){
 
         header($ht);
     }
+}elseif (isset($_REQUEST['switch']) && $_REQUEST['switch']==4) {
+    $compraDAO->registrarCompra($S); 
 }
 
 // esses ifs definem apagar e editar

@@ -164,68 +164,72 @@ include "incs/ValidarSessao.php";
                                 </div>
                             </div>
                         </div>
-                        <?php if (isset($_SESSION['cliente'])) : ?>
+                        <?php if (isset($_SESSION['cliente']) && $_SESSION['carrinho']!=null) : ?>
                             <!-- offcanvas finalizar compra -->
                             <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offFinalizar">
-                            <form action="" class="row m-0 p-0" method="post">
                                 <div class="offcanvas-header">
                                     <h2 class="text-center">Finalizar Compra</h2>
                                     <button type="button" class="btn-close float-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
                                     <div class="offcanvas-body d-flex h-100">
                                         <div class="col-6" id="verify">
-                                            <div class="row bg-warning pt-5">
-                                                <h2 class="text-center">DADOS DO CLIENTE</h2>
-                                                <?php $cl = ClienteDAO::ConsultaID($_SESSION['cliente']) ?>
+                                            <div class="row bg-light">
+                                                <h2 class="text-center my-2">DADOS DA COMPRA</h2>
+                                                <div class="lista-Fin my-2">
+                                                <table class="table table-striped mt-2">
+                                                    <tr>
+                                                        <th>Foto</th>
+                                                        <th>Nome</th>
+                                                        <th>Qtd</th>
+                                                        <th>Subtotal</th>
+                                                    </tr>
 
-                                                <div class="col-6">
-                                                    <label for="idnome" class="form-label">Nome do Titular</label>
-                                                    <input disabled type="text" name="nomecartao" value='<?= $cl['nomecartao'] ?>' id="idnome" class="form-control client">
-                                                </div>
 
-                                                <div class="col-6">
-                                                    <label for="idquantidade" class="form-label">CPF</label>
-                                                    <input disabled type="number" name="cpf" maxlength="14" minlength="11" value='<?= $cl['cpf'] ?>' class="form-control client">
-                                                </div>
+                                                    <?php
+                                                    $produtoDAO = new ProdutoDAO();
 
-                                                <div class="col-5">
-                                                    <label for="idquantidade" class="form-label">Números do cartão</label>
-                                                    <input disabled type="text" name="numeros" maxlength="16" value='<?= $cl['numeros'] ?>' class="form-control client">
-                                                </div>
+                                                    foreach ($carrinho as $car) :
+                                                        $it = $produtoDAO->ConsultaID($car['idprodutos']);
+                                                        $sub = $car['quantidade'] * $it['preco'];
+                                                        $total += $sub; ?>
+                                                        <tr>
+                                                            <td class="align-middle">
+                                                                <div class="img-car">
+                                                                    <img src='data:image/png;base64,<?= base64_encode($it['imagem']) ?>'>
+                                                                </div>
+                                                            </td>
+                                                            <td class="align-middle"><?= $it['nome'] ?></td>
+                                                            <td class="align-middle">
+                                                                <p class="text-center px-2 m-0"><?= $car['quantidade'] ?></p>
+                                                            </td>
+                                                            <td class="align-middle">R$ <?= number_format($sub, 2, ',', '.') ?></td>
+                                                        </tr>
 
-                                                <div class="col-2">
-                                                    <label for="idquantidade" class="form-label">3 Números</label>
-                                                    <input disabled type="number" name="3numeros" minlength="3" maxlength="3" value='<?= $cl['3numeros'] ?>' class="form-control client">
+                                                    <?php endforeach; ?>
+                                                </table>
                                                 </div>
-
-                                                <div class="col-2">
-                                                    <label for="idquantidade" class="form-label">Agência</label>
-                                                    <input disabled type="text" name="agencia" value='<?= $cl['agencia'] ?>' class="form-control client">
-                                                </div>
-
-                                                <div class="col-3">
-                                                    <label for="idquantidade" class="form-label">Data</label>
-                                                    <input disabled type="text" name="data" minlength="4" maxlength="5" value='<?= $cl['data'] ?>' class="form-control client">
-                                                </div>
-                                                <div class="d-flex">
-                                                    <p class="mx-2">Nome: <?=$cl['nome']?></p>
-                                                    <p class="mx-2">Email: <?=$cl['email']?></p>
-                                                    <p class="mx-2">Endereço: <?=$cl['endereco']?></p>
-                                                </div>
-                                                <h4>DADOS DA COMPRA</h4>
-                                                    <p>Valor: R$ <?=number_format($_SESSION['total'],2,",",".")?></p>
+                                                <h2 class="mx-2">Total: R$ <?=number_format($_SESSION['total'],2,",",".")?></h2>
                                             </div>
                                         </div>
                                         <div class="col-4 separator">
-                                            <div class="bg-warning" id="fin">
-                                            
+                                            <div class="bg-light" id="fin">
+                                            <?php $_SESSION['session'] = $_SESSION;; $cl = ClienteDAO::ConsultaID($_SESSION['cliente']) ?>
+                                                <h2 class="text-center py-3">DADOS DO CLIENTE</h2>
+                                                <h5 class="p-2">Nome: <?=$cl['nome']?></h5>
+                                                <h5 class="p-2">Email: <?=$cl['email']?></h5>
+                                                <h5 class="p-2">Endereço: <?=$cl['endereco']?></h5>
+                                                <h5 class="p-2">Nome do Titular: <?=$cl['nomecartao']?></h5>
+                                                <h5 class="p-2">Números do Cartão: <?=$cl['numeros']?></h5>
                                             </div>
                                             <div class="embaixo">
+                                            <form action="incs/Confirmacao.php" class="row m-0 p-0" method="post">
+                                                <input type="hidden" name="switch" value="4">
+                                                <input type="hidden" name="session" value="<?=$_SESSION['session']?>">
                                                 <button type="submit" class="float-end btn btn-primary">Pagar</button>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
-                                    </form>
                                 </div>
                             
                             <?php endif; ?>
