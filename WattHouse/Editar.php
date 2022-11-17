@@ -17,6 +17,7 @@ $categoriaDAO = new CategoriaDAO();
     <form method="POST" enctype="multipart/form-data" action="incs/Confirmacao.php?tipo=produto&acao=editar" class="container w-75 p-4">
         <input type="hidden" name='p' value="<?=$it['idprodutos']?>">
         <input type="hidden" name='switch' value='3>'>
+        <input type="hidden" value="<?=$server?>" name="server">
         <div class="mb-3">
             <label for="idnome" class="form-label">Nome do produto</label>
             <input type="text" name="nome" id="idnome" value="<?=$it['nome']?>" class="form-control" required>
@@ -89,7 +90,8 @@ $categoriaDAO = new CategoriaDAO();
         $us = $usuarioDAO->ConsultaID($_GET['p']);?>
     <form method="POST" enctype="multipart/form-data" action="incs/Confirmacao.phptipo=usuario&acao=editar" class="container w-75 p-4">
         <input type="hidden" name='p' value='<?=$_GET['p']?>'>
-        ]<input type="hidden" name='switch' value='2'>
+        <input type="hidden" name='switch' value='2'>
+        <input type="hidden" value="<?=$server?>" name="server">
         <div class="mb-3">
             <label for="idnome" class="form-label">Nome do usuario</label>
             <input type="text" name="nome" id="idnome" value="<?=$us['nome']?>" class="form-control" required>
@@ -134,6 +136,8 @@ $categoriaDAO = new CategoriaDAO();
             <input type="hidden"  name="idcartao" value="<?=$cl['idcartao']?>">
 
             <input type="hidden" name='switch' value='1>'>
+
+            <input type="hidden" value="<?=$server?>" name="server">
 
             <div class="mb-3">
                 <label for="idnome" class="form-label">Nome do Usuario</label>
