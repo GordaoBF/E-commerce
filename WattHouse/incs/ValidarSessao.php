@@ -1,6 +1,6 @@
 <?php
 
-if (isset($title) && (preg_match('/Items/', $title) || preg_match('/Home/', $title) || preg_match('/Product/', $title)) || preg_match('/finalizar/', $title)) {
+if (isset($title) && (preg_match('/items/', $title) || preg_match('/Home/', $title) || preg_match('/Product/', $title)) || preg_match('/finalizar/', $title)) {
     if (!isset($_SESSION['idclientes'])) {
     }
 }else{

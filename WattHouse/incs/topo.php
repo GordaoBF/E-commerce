@@ -255,7 +255,7 @@ include "incs/ValidarSessao.php";
                                     <img src="img/profile-icon.png" alt="" width="35px" title="Fazer login">
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="Profile,php">Perfil</a></li>
+                                    <li><a class="dropdown-item" href="Profile.php">Perfil</a></li>
                                     <li><a class="dropdown-item" href="incs/LogOut.php?server=<?=$server?>">LogOut</a></li>
                                 </ul>
                             </div>
@@ -372,6 +372,7 @@ include "incs/ValidarSessao.php";
         <!-- Parte de baixo -->
         <div class="container pb-3">
             <ul class="list-unstyled text-center nav justify-content-center ">
+                <li class='px-5 mx-3 nav-item'><a href='items.php' class='text-decoration-none text-light '>Todos</a></li>
                 <?php
                 $categoria = CategoriaDAO::ConsultaCat();
                 foreach ($categoria as $cat) : ?>
