@@ -12,8 +12,7 @@
 
             $carrinho = $dados['carrinho'];
             foreach ($carrinho as $item) {
-                $preco = number_format($item['preco']);
-                $sql = "insert into watthouse.itens_compra(idcompras, idprodutos, quantidade, preco) values ('$idcompras','{$item['idprodutos']}','{$item['quantidade']}','".$preco."')";
+                $sql = "insert into watthouse.itens_compra(idcompras, idprodutos, quantidade, preco) values ('$idcompras','{$item['idprodutos']}','{$item['quantidade']}','".$item['preco']."')";
 
                 $conexao->exec($sql);
             }

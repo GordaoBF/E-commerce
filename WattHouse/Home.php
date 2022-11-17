@@ -93,36 +93,9 @@ include "incs/topo.php";
     </div>
 </div>
 <!-- cards normais -->
-<div class="container">
-    <h4 class='text-dark text-center pb-5'>ITENS NORMAL</h4>
-    <div class="row row-cols-md-3 row-cols-lg-5 mb-5 g-4 card-group">
-        <?php
-        $produtos = ProdutoDAO::ConsultaTodos();
-        
-        foreach ($produtos as $it) :
-            if ($it['promocao'] == 0) :
-        ?>
-        <!-- Card <?php echo $it['nome']; ?> -->
-        <div class='col'>
-            <div class='card border'>
-                <form action="<?=$server?>" method="post">
-                    <a href='Product.php?p=<?= $it['idprodutos'] ?>' id="verMais">
-                        <div class="card-h">
-                            <input type="hidden" name="operacao" value="inserir">
-                            <input type="hidden" name="p" value="<?=$it['idprodutos']?>">
-                            <img src='data:image/png;base64,<?= base64_encode($it['imagem']) ?>' class='p-2 card-img' alt='<?= $it['nome'] ?>'>
-                        </div>
-                    </a>
-                    <div class="card-b p-4 pb-0">
-                        <h5 class='text-center title'><?= $it['nome'] ?></h5>
-                        <p class='px-3 text-center fw-light title p-0 m-0'><span class=''><b>R$</b><?= number_format($it['preco'], 2, ',', '.') ?></p>
-                        <button type="submit" class='text-center btn but mt-2 btn-primary rounded-pill'>Adquirir</button> 
-                    </div>
-                </form>
-            </div>
-        </div>
-        <?php endif; endforeach; ?>
-    </div>
+<div class="">
+    <h4 class='text-dark text-center pt-5 pb-3'>Produtos</h4>
+    <?php include "incs/produtos.php";?>
 </div>
 
 <?php include "incs/rodape.php"; ?>

@@ -9,6 +9,9 @@ include "incs/topo.php";
         <h4 class="text-center">Volte sempre!</h4>
         <h4 class="text-center">^_^</h4>
     </div>
+    <div class="d-flex justify-content-center">
+    <img src="img/turiip.png" width="50%" alt="">
+    </div>
 <?php
     include "incs/rodape.php";
 ?>
