@@ -1,7 +1,8 @@
 <?php 
     session_start();
-    include "incs/ValidarSessao.php";
     $server = $_SERVER['REQUEST_URI'];
+    $title = $_SERVER['PHP_SELF'];
+    include "incs/ValidarSessao.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,7 +63,7 @@
                     </a>
                 </li>
                 <li id="link">
-                    <a href="incs/LogOut.php" id="link">
+                    <a href="incs/LogOut.php?server=<?=$server?>" id="link">
                         Sair
                     </a>
                 </li>

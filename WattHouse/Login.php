@@ -1,6 +1,7 @@
 <?php
     require_once "src/UsuarioDAO.php";
     $usuarioDAO = new UsuarioDAO();
+    $server = $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +36,10 @@
             <input type="text" name="login" id="idlogin" class="form-control" required>
         </div>
 
+        <input type="hidden" name="server" value="<?=$server?>">
+        
         <div class="mb-3">
+
             <label for="idmarca" class="form-label">Senha</label>
             <input type="password" name="senha" id="idsenha" class="form-control">
         </div>

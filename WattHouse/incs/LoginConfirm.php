@@ -7,9 +7,8 @@ $usuarioDAO = new UsuarioDAO();
 $clienteDAO = new ClienteDAO();
 
 if (isset($_REQUEST['server'])) {
-    if (preg_match('/ADM/',$_REQUEST['server'])) {
+    if (preg_match('/ADM/',$_REQUEST['server']) || preg_match('/Login/',$_REQUEST['server'])) {
         $server = 'ADM';
-        echo $server;
     }elseif (preg_match('/Home/',$_REQUEST['server'])) {
         $server = 'Home';
     }elseif (preg_match('/Items/',$_REQUEST['server'])) {
@@ -47,7 +46,10 @@ if(isset($_POST['login']) && !isset($_POST['email'])){
         
         header($ht);
     }
-}elseif(!isset($_POST['login']) && !isset($_POST['cliente'])){}
+}elseif(!isset($_POST['login']) && !isset($_POST['email'])){
+    $ht = "location:../".$server.".php";
+        
+    header($ht);}
 
 // if (isset($_POST['login']) && !isset($_POST['cliente']) && $usuarioDAO->Validar($_POST)) {
 //     $_SESSION['login'] = $_POST['login'];

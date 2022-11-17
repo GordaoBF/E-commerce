@@ -35,7 +35,9 @@ include "incs/ValidarSessao.php";
         <!-- parte de cima do header -->
         <div class="container d-flex" id="cima">
             <!-- logo e botão -->
-            <a href="Home.php" id='logo'><img src="img/WATTHOUSE_White.png" alt="WattHouse"></a>
+            <div id="logo">
+                <a href="Home.php"><img src="img/WATTHOUSE_White.png" alt="WattHouse"></a>
+            </div>
             <!-- barra de pesquisa -->
             <div class="navbar w-100">
                 <form class="d-flex w-100 flex-row-reverse" action="Items.php">
@@ -238,22 +240,30 @@ include "incs/ValidarSessao.php";
                             <?php endif; ?>
                         <!-- botão conta cliente -->
                         <?php if(!isset($_SESSION['idclientes'])): ?>
-                        <a href="#login" role="button" class="text-light text-decoration-none pe-3" data-bs-toggle="modal"><img src="img/profile-icon.png" alt="" width="35px" title="Fazer login"></a>
+                        <div class="dropdown">
+                            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/profile-icon.png" alt="" width="35px" title="Fazer login">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#login" role="button" class="dropdown-item" data-bs-toggle="modal">Login</a></li>
+                                <li><a href="#cadastro" role="button" class="dropdown-item" data-bs-toggle="modal">Cadastro</a></li>
+                            </ul>
+                        </div>
                         <?php else: ?>
                             <div class="dropdown">
                                 <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="img/profile-icon.png" alt="" width="35px" title="Fazer login">
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a class="dropdown-item" href="Profile,php">Perfil</a></li>
+                                    <li><a class="dropdown-item" href="incs/LogOut.php?server=<?=$server?>">LogOut</a></li>
                                 </ul>
                             </div>
                         <?php endif; ?>
                         <!-- botao do carrinho -->
+                        
                         <div>
-                            <a href="#offCarrinho" class="m-0 p-0 position-relative" data-bs-toggle="offcanvas"><img src="img/shopping-cart.png" alt="" width="35px" title="Carrinho">
+                            <a href="#offCarrinho" class="m-0 p-0 position-relative" data-bs-toggle="offcanvas"><img src="img/shopping-cart.png" alt="" width='35px' title="Carrinho">
                                 <span class="position-absolute top-0 start-100 translate-middle badge text-dark rounded-pill bg-light">
                                     <?php echo sizeof($carrinho) ?>
                                     <span class="visually-hidden">Carrinho de Comprar</span>
@@ -261,99 +271,95 @@ include "incs/ValidarSessao.php";
                             </a>
                         </div>
                         <!-- modal Login -->
-                        <div>
-                            <div class="modal fade" id="login" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" >
-                                    <div class="modal-content" id="loginModal">
-                                        <h1 class="text-center fs-1 my-5">Login</h1>
-                                        <form action="incs/LoginConfirm.php" class="w-100 px-5" method="post">
+                        <div class="modal fade" id="login" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" >
+                                <div class="modal-content" id="loginModal">
+                                    <h1 class="text-center fs-1 my-5">Login</h1>
+                                    <form action="incs/LoginConfirm.php" class="w-100 px-5" method="post">
 
-                                            <label for="" class="form-label">Email:</label>    
-                                            <input type="text" class="form-control mb-5" name='email' placeholder="Email">
-                                            <input type="hidden" name='server' value="<?=$server?>">
-                                            <label for="" class="form-label">Senha:</label>
-                                            <input class="form-control mb-5" type="password" name="senha" placeholder="Senha">
+                                        <label for="" class="form-label">Email:</label>    
+                                        <input type="text" class="form-control mb-5" name='email' placeholder="Email">
+                                        <input type="hidden" name='server' value="<?=$server?>">
+                                        <label for="" class="form-label">Senha:</label>
+                                        <input class="form-control mb-5" type="password" name="senha" placeholder="Senha">
 
-                                            <a class="btn" data-bs-toggle='modal' data-bs-target="#cadastro">Fazer cadastro</a>
-                                            <button type="submit" class="btn btn-primary float-end mb-5">Confirmar</button>
+                                        <a class="btn" data-bs-toggle='modal' data-bs-target="#cadastro">Fazer cadastro</a>
+                                        <button type="submit" class="btn btn-primary float-end mb-5">Confirmar</button>
 
-                                        </form>
-                                        <?php if(isset($_REQUEST['msg'])):?>
-                                            <div class="alert alert-danger mx-4">
-                                                <?=$_REQUEST['msg']?>
-                                            </div>
-                                        <?php endif;?>
-                                    </div>
+                                    </form>
+                                    <?php if(isset($_REQUEST['msg'])):?>
+                                        <div class="alert alert-danger mx-4">
+                                            <?=$_REQUEST['msg']?>
+                                        </div>
+                                    <?php endif;?>
                                 </div>
                             </div>
                         </div>
 
                         <!-- modal Cadastro -->
-                        <div>
-                            <div class="modal fade" id="cadastro" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" >
-                                    <div class="modal-content" id="cadastroModal">
-                                        <h1 class="text-center fs-1 my-5">Cadastro</h1>
-                                        <form class="mx-5 row mb-4" method="POST" enctype="" action="incs/Confirmacao.php?acao=cadastro">
-                                            <div class="mb-3 col-6">
-                                                <label for="idnome" class="form-label">Nome do Usuario</label>
-                                                <input type="text" name="nome" id="idnome" class="form-control client" >
-                                            </div>
+                        <div class="modal fade" id="cadastro" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" >
+                                <div class="modal-content" id="cadastroModal">
+                                    <h1 class="text-center fs-1 my-5">Cadastro</h1>
+                                    <form class="mx-5 row mb-4" method="POST" enctype="" action="incs/Confirmacao.php?acao=cadastro">
+                                        <div class="mb-3 col-6">
+                                            <label for="idnome" class="form-label">Nome do Usuario</label>
+                                            <input type="text" name="nome" id="idnome" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-6">
-                                                <label for="idpreco" class="form-label">Email</label>
-                                                <input type="Email" name="email" id="idlogin" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-6">
+                                            <label for="idpreco" class="form-label">Email</label>
+                                            <input type="Email" name="email" id="idlogin" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-4">
-                                                <label for="idmarca" class="form-label">Senha</label>
-                                                <input type="password" name="senha" minlength="4" id="idsenha" class="form-control client">
-                                            </div>
+                                        <div class="mb-3 col-4">
+                                            <label for="idmarca" class="form-label">Senha</label>
+                                            <input type="password" name="senha" minlength="4" id="idsenha" class="form-control client">
+                                        </div>
 
-                                            <div class="mb-3 col-4">
-                                                <label for="idquantidade" class="form-label">Confirmar Senha</label>
-                                                <input type="password" name="senha2" minlength="4" id="idsenha" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-4">
+                                            <label for="idquantidade" class="form-label">Confirmar Senha</label>
+                                            <input type="password" name="senha2" minlength="4" id="idsenha" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-4">
-                                                <label for="idquantidade" class="form-label">Nome Cartão</label>
-                                                <input type="text" name="nomecartao" id="idnome" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-4">
+                                            <label for="idquantidade" class="form-label">Nome Cartão</label>
+                                            <input type="text" name="nomecartao" id="idnome" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-3">
-                                                <label for="idquantidade" class="form-label">CPF</label>
-                                                <input type="number" name="cpf" maxlength="14" minlength="11" id="idcartao" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-3">
+                                            <label for="idquantidade" class="form-label">CPF</label>
+                                            <input type="number" name="cpf" maxlength="14" minlength="11" id="idcartao" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-3">
-                                                <label for="idquantidade" class="form-label">Números do cartão</label>
-                                                <input type="text" name="numeros" maxlength="16" id="idcartao" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-3">
+                                            <label for="idquantidade" class="form-label">Números do cartão</label>
+                                            <input type="text" name="numeros" maxlength="16" id="idcartao" class="form-control client" >
+                                        </div>
 
-                                            <div class="mb-3 col-2">
-                                                <label for="idquantidade" class="form-label">3 Números</label>
-                                                <input type="number" name="3numeros" minlength="3" maxlength="3" id="idcartao" class="form-control client" >
-                                            </div>
+                                        <div class="mb-3 col-2">
+                                            <label for="idquantidade" class="form-label">3 Números</label>
+                                            <input type="number" name="3numeros" minlength="3" maxlength="3" id="idcartao" class="form-control client" >
+                                        </div>
+                                        
+                                        <div class="mb-3 col-2">
+                                            <label for="idquantidade" class="form-label">Agência</label>
+                                            <input type="text" name="agencia" id="idcartao" class="form-control client" >
+                                        </div>
+
+                                        <div class="mb-3 col-2">
+                                            <label for="idquantidade" class="form-label">DATA</label>
+                                            <input type="text" name="data" minlength="4" maxlength="5" id="idcartao" class="form-control client" >
+                                        </div>
                                             
-                                            <div class="mb-3 col-2">
-                                                <label for="idquantidade" class="form-label">Agência</label>
-                                                <input type="text" name="agencia" id="idcartao" class="form-control client" >
-                                            </div>
+                                        <input type="hidden" value="1" name="switch">
+                                        <input type="hidden" value="<?=$server?>" name="server">
 
-                                            <div class="mb-3 col-2">
-                                                <label for="idquantidade" class="form-label">DATA</label>
-                                                <input type="text" name="data" minlength="4" maxlength="5" id="idcartao" class="form-control client" >
-                                            </div>
-                                                
-                                            <input type="hidden" value="1" name="switch">
-                                            <input type="hidden" value="<?=$server?>" name="server">
-
-                                            <div>
-                                                <a class="btn" data-bs-toggle='modal' data-bs-target="#login">Fazer login</a>
-                                                <button type="submit" class="btn btn-primary float-end mb-2">Confirmar</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        <div>
+                                            <a class="btn" data-bs-toggle='modal' data-bs-target="#login">Fazer login</a>
+                                            <button type="submit" class="btn btn-primary float-end mb-2">Confirmar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

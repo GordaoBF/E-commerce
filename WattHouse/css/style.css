@@ -9,11 +9,11 @@ html {font-family: 'Thasadith', sans-serif; font-size: medium;}
 header #cima{height: 20vh; width: 80vw;}
 
 /* search vai ter esse width */
-.search{width: 80%; height: 6vh;}
+.search{width: 80%; height: 10%;}
 
-/* define que a iamgem do logo vai ocupar esse espaço */
-#logo{width: 150px; height: 150px;}
-#logo img{width: 100%; height: 100%;}
+/* define que a iamgem do logo vai ocupar esse espaço
+#logo{width: 150px; height: 150px; padding: 0px; margin: 0px;} */
+#logo a img{width: 10vw; height: 100%;}
 
 #verify{width: 40vw; margin: 0px 3vw 0px 3vw; }
 
