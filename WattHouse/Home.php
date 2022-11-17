@@ -82,6 +82,7 @@ include "incs/topo.php";
         </div>
         <?php endif; endfor;?>
     </div>
+
     <!-- icone de indicação -->
     <div class="carousel-indicators mt-3">
         <?php for ($i = 1; $i <= 5; $i++): $n = $i-1; if($i == 1):  ?>
